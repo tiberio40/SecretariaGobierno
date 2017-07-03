@@ -1,0 +1,39 @@
+﻿@model IEnumerable<SecretariaGobierno.Models.Observacion>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Instancia.InstanciaID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Anotacion)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Instancia.InstanciaID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Anotacion)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ObservacionID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ObservacionID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ObservacionID })
+        </td>
+    </tr>
+}
+
+</table>

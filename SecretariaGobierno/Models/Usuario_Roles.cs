@@ -10,6 +10,7 @@ namespace SecretariaGobierno.Models
     {
         [Key]
         public int Usuario_RolesID { get; set; }
+        public bool Valor { get; set; }
 
         public int RolesUsuarioID { get; set; }
         public string UserName { get; set; }

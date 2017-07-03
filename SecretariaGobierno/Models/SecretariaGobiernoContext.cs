@@ -27,5 +27,15 @@ namespace SecretariaGobierno.Models
         public System.Data.Entity.DbSet<SecretariaGobierno.Models.Usuario> Usuarios { get; set; }
 
         public System.Data.Entity.DbSet<SecretariaGobierno.Models.Usuario_Roles> Usuario_Roles { get; set; }
+
+        public System.Data.Entity.DbSet<SecretariaGobierno.Models.Establecimiento> Establecimientos { get; set; }
+
+        public System.Data.Entity.DbSet<SecretariaGobierno.Models.Direccion> Direccions { get; set; }
+
+        public System.Data.Entity.DbSet<SecretariaGobierno.Models.Instancia> Instancias { get; set; }
+
+        public System.Data.Entity.DbSet<SecretariaGobierno.Models.Estado> Estadoes { get; set; }
+
+        public System.Data.Entity.DbSet<SecretariaGobierno.Models.Observacion> Observacions { get; set; }
     }
 }

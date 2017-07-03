@@ -1,0 +1,34 @@
+﻿@model SecretariaGobierno.Models.Observacion
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Observacion</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Instancia.InstanciaID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Instancia.InstanciaID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Anotacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Anotacion)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ObservacionID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -16,13 +16,35 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Secretaria de Gobierno", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Ley 232<b class="caret"></b></a>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                            <li>@Html.ActionLink("Establecimientos", "Index", "Establecimientos")</li>
+                            <li>@Html.ActionLink("Administrar Estados", "Index", "Estados")</li>
+                            <li>@Html.ActionLink("Instancias", "Index", "Instancias")</li>
+                            <li>@Html.ActionLink("Asignar Privilegios", "Index", "Usuario_Roles")</li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Separated link</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Herramientas Usuario<b class="caret"></b></a>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                            <li>@Html.ActionLink("Usarios", "Index", "Usuarios")</li>
+                            <li>@Html.ActionLink("Privilegios de Usuario", "Index", "RolesUsuario")</li>
+                            <li>@Html.ActionLink("Asignar Privilegios", "Index", "Usuario_Roles")</li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Separated link</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li>@Html.ActionLink("Inicio de Sesión", "Index", "Usuarios")</li>
                 </ul>
             </div>
         </div>

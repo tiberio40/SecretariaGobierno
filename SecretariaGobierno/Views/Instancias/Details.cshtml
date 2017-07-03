@@ -1,0 +1,74 @@
+﻿@model SecretariaGobierno.Models.Instancia
+
+@{
+    ViewBag.Title = "Detalles";
+}
+
+<h2>Detalles de la Instancia</h2>
+
+<div>
+    <hr />
+    <h5 style="font-weight:bold;">Información General</h5>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Establecimiento.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Establecimiento.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Estado.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Estado.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Folios)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Folios)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Actualizacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Actualizacion)
+        </dd>
+    </dl>
+    <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("Edit", new { id = Model.InstanciaID })'">Editar Información Principal</button>
+    <hr />
+    <h5 style="font-weight:bold;">Observaciones</h5>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Numero</th>
+                <th>Anotaciones</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                int x = 1;
+            }
+            @foreach (var item in ViewBag.Observacion)
+            {
+                <tr>
+                    <td style="color:dodgerblue;">#@x</td>
+                    <td>@item</td>
+                    @{ x++; }
+                </tr>
+                        }
+        </tbody>
+    </table>
+</div>
+<p>
+    <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("Index", "Observacions", new { id = Model.InstanciaID })'">Añadir Observaciones</button>
+    <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("Edit", new { id = Model.InstanciaID })'">Editar Observaciones</button>
+</p>

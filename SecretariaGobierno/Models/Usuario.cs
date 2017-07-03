@@ -29,6 +29,8 @@ namespace SecretariaGobierno.Models
         [Display(Name = "Contraseña")]
         public string Contraseña { get; set; }
 
+        public virtual ICollection<Establecimiento> Establecimiento { get; set; }
+
         public virtual ICollection<Usuario_Roles> Usuario_Roles { get; set; }
     }
 }
