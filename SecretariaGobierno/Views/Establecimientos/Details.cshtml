@@ -4,20 +4,12 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<h2>Detalles del Establecimiento</h2>
 
 <div>
-    <h4>Establecimiento</h4>
     <hr />
+    <h5 style="font-weight:bold;">Información General</h5>
     <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Usuario.Nombres)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Usuario.Nombres)
-        </dd>
-
         <dt>
             @Html.DisplayNameFor(model => model.Nombre)
         </dt>
@@ -33,10 +25,60 @@
         <dd>
             @Html.DisplayFor(model => model.Propietario)
         </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Direccion)
+        </dt>
 
+        <dd>
+            @Html.DisplayFor(model => model.Direccion)
+        </dd>
     </dl>
+    <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("Edit", new { id = Model.EstablecimientoID })'">Editar Información Principal</button>
+    <hr />
+    <h5 style="font-weight:bold;">Observaciones</h5>
+    <hr />
+    <h5 style="font-weight:bold;">Observaciones</h5>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Instancias</th>
+                <th>Estado</th>
+                <th>Fecha Ultima Actuación</th>
+                <th>Opciones</th>
+            </tr>
+        </thead>
+        <tbody>
+          @foreach (var x in Model.Instancia)
+          {
+              <tr>
+                  @if (x.Numero == false)
+                  {
+                    <td><p>Primera Instancia</p></td>
+                  }
+                  else
+                  {
+                    <td><p>Segunda Instancia</p></td>
+                  }
+
+                  <td>@Html.DisplayFor(p => x.Estado.Nombre)</td>
+                  <td>@Html.DisplayFor(p => x.Actualizacion)</td>
+                  <td class="dropdown">
+                      <button class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                          Dropdown
+                          <span class="caret"></span>
+                      </button>
+                      <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                          <li>@Html.ActionLink("Detalles", "Details", "Instancias", new { id = x.InstanciaID }, null)</li>
+                          <li>@Html.ActionLink("Editar Instancia", "Edit", "Instancias", new { id = x.InstanciaID }, null)</li>
+                          <li><a href="#">Borrar</a></li>                          
+                      </ul>
+                  </td>
+              </tr>
+          }
+        </tbody>
+    </table>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.EstablecimientoID }) |
-    @Html.ActionLink("Back to List", "Index")
+    <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("Create")'">Añadir Observaciones</button>
+    <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("Edit", new { id = Model.EstablecimientoID })'">Editar Observaciones</button>
 </p>

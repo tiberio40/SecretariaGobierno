@@ -11,7 +11,11 @@ namespace SecretariaGobierno.Models
         [Key]   
         public int InstanciaID { get; set; }
 
+        [Required]
+        [Display(Name = "Numero de Folios")]
         public int Folios { get; set; }
+
+        public bool Numero { get; set; }
 
         [Required]
         [Display(Name = "Fecha Ultima Actuación")]

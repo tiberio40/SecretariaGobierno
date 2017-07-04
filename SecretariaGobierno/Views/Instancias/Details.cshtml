@@ -1,14 +1,14 @@
 ﻿@model SecretariaGobierno.Models.Instancia
 
 @{
-    ViewBag.Title = "Detalles";
+    ViewBag.Title = "Details";
 }
 
-<h2>Detalles de la Instancia</h2>
+<h2>Details</h2>
 
 <div>
+    <h4>Instancia</h4>
     <hr />
-    <h5 style="font-weight:bold;">Información General</h5>
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.Establecimiento.Nombre)
@@ -35,40 +35,24 @@
         </dd>
 
         <dt>
+            @Html.DisplayNameFor(model => model.Numero)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Numero)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.Actualizacion)
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.Actualizacion)
         </dd>
+
     </dl>
-    <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("Edit", new { id = Model.InstanciaID })'">Editar Información Principal</button>
-    <hr />
-    <h5 style="font-weight:bold;">Observaciones</h5>
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>Numero</th>
-                <th>Anotaciones</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @{
-                int x = 1;
-            }
-            @foreach (var item in ViewBag.Observacion)
-            {
-                <tr>
-                    <td style="color:dodgerblue;">#@x</td>
-                    <td>@item</td>
-                    @{ x++; }
-                </tr>
-                        }
-        </tbody>
-    </table>
 </div>
 <p>
-    <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("Index", "Observacions", new { id = Model.InstanciaID })'">Añadir Observaciones</button>
-    <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("Edit", new { id = Model.InstanciaID })'">Editar Observaciones</button>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.InstanciaID }) |
+    @Html.ActionLink("Back to List", "Index")
 </p>

@@ -17,8 +17,8 @@ namespace SecretariaGobierno.Controllers
         // GET: Establecimientos
         public ActionResult Index()
         {
-            var establecimientoes = db.Establecimientos.Include(e => e.Usuario);
-            return View(establecimientoes.ToList());
+            var establecimientos = db.Establecimientos.Include(e => e.Usuario);
+            return View(establecimientos.ToList());
         }
 
         // GET: Establecimientos/Details/5
@@ -48,7 +48,7 @@ namespace SecretariaGobierno.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "EstablecimientoID,Nombre,Propietario,UserName")] Establecimiento establecimiento)
+        public ActionResult Create([Bind(Include = "EstablecimientoID,Nombre,Propietario,Direccion,UserName")] Establecimiento establecimiento)
         {
             if (ModelState.IsValid)
             {
@@ -82,7 +82,7 @@ namespace SecretariaGobierno.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "EstablecimientoID,Nombre,Propietario,UserName")] Establecimiento establecimiento)
+        public ActionResult Edit([Bind(Include = "EstablecimientoID,Nombre,Propietario,Direccion,UserName")] Establecimiento establecimiento)
         {
             if (ModelState.IsValid)
             {

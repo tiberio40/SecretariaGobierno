@@ -29,7 +29,6 @@ namespace SecretariaGobierno.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Instancia instancia = db.Instancias.Find(id);
-            ViewBag.Observacion = db.Observacions.Where(s => s.InstanciaID == id).Select(p => p.Anotacion);
             if (instancia == null)
             {
                 return HttpNotFound();
@@ -50,14 +49,27 @@ namespace SecretariaGobierno.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "InstanciaID,Folios,Actualizacion,EstablecimientoID,EstadoID")] Instancia instancia)
+        public ActionResult Create([Bind(Include = "InstanciaID,Folios,Numero,Actualizacion,EstablecimientoID,EstadoID")] Instancia instancia)
         {
+            int numeroFilasInstancia = db.Instancias.Where(p => p.EstablecimientoID == instancia.EstablecimientoID).Count();
+
             if (ModelState.IsValid)
             {
+                if (numeroFilasInstancia < 1)
+                {
+                    instancia.Numero = false;
+                }
+                else
+                {
+                    instancia.Numero = true;
+                }
+
                 db.Instancias.Add(instancia);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            
+            
 
             ViewBag.EstablecimientoID = new SelectList(db.Establecimientos, "EstablecimientoID", "Nombre", instancia.EstablecimientoID);
             ViewBag.EstadoID = new SelectList(db.Estadoes, "EstadoID", "Nombre", instancia.EstadoID);
@@ -86,7 +98,7 @@ namespace SecretariaGobierno.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "InstanciaID,Folios,Actualizacion,EstablecimientoID,EstadoID")] Instancia instancia)
+        public ActionResult Edit([Bind(Include = "InstanciaID,Folios,Numero,Actualizacion,EstablecimientoID,EstadoID")] Instancia instancia)
         {
             if (ModelState.IsValid)
             {

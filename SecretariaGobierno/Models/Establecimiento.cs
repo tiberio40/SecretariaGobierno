@@ -19,10 +19,12 @@ namespace SecretariaGobierno.Models
         [Display(Name = "Nombre del Propietario")]
         public string Propietario { get; set; }
 
+        [Required]
+        [Display(Name = "Dirección del Establecimiento")]
+        public string Direccion { get; set; }
+
         public string UserName { get; set; }
         public virtual Usuario Usuario { get; set; }
-
-        public virtual ICollection<Direccion> Direccion { get; set;}
 
         public virtual ICollection<Instancia> Instancia { get; set; }
     }
