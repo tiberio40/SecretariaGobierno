@@ -64,7 +64,7 @@
                   <td>@Html.DisplayFor(p => x.Actualizacion)</td>
                   <td class="dropdown">
                       <button class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                          Dropdown
+                          Opciones
                           <span class="caret"></span>
                       </button>
                       <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
@@ -79,6 +79,6 @@
     </table>
 </div>
 <p>
-    <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("Create")'">Añadir Observaciones</button>
-    <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("Edit", new { id = Model.EstablecimientoID })'">Editar Observaciones</button>
+    <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("Create", "Instancias", new { id = Model.EstablecimientoID } )'">Añadir Instancias</button>
+    
 </p>

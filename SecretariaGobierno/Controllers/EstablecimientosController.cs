@@ -17,7 +17,7 @@ namespace SecretariaGobierno.Controllers
         // GET: Establecimientos
         public ActionResult Index()
         {
-            var establecimientos = db.Establecimientos.Include(e => e.Usuario);
+            var establecimientos = db.Establecimientos.Include(e => e.Usuario).OrderBy(c => c.Nombre);
             return View(establecimientos.ToList());
         }
 

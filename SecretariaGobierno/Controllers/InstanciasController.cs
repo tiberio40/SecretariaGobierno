@@ -37,9 +37,9 @@ namespace SecretariaGobierno.Controllers
         }
 
         // GET: Instancias/Create
-        public ActionResult Create()
+        public ActionResult Create(int? id)
         {
-            ViewBag.EstablecimientoID = new SelectList(db.Establecimientos, "EstablecimientoID", "Nombre");
+            //ViewBag.EstablecimientoID = new SelectList(db.Establecimientos, "EstablecimientoID", "Nombre");
             ViewBag.EstadoID = new SelectList(db.Estadoes, "EstadoID", "Nombre");
             return View();
         }
@@ -49,7 +49,7 @@ namespace SecretariaGobierno.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "InstanciaID,Folios,Numero,Actualizacion,EstablecimientoID,EstadoID")] Instancia instancia)
+        public ActionResult Create([Bind(Include = "InstanciaID,Folios,Numero,Actualizacion,EstablecimientoID,EstadoID")] Instancia instancia, int id)
         {
             int numeroFilasInstancia = db.Instancias.Where(p => p.EstablecimientoID == instancia.EstablecimientoID).Count();
 
@@ -63,7 +63,7 @@ namespace SecretariaGobierno.Controllers
                 {
                     instancia.Numero = true;
                 }
-
+                instancia.EstablecimientoID = id;
                 db.Instancias.Add(instancia);
                 db.SaveChanges();
                 return RedirectToAction("Index");

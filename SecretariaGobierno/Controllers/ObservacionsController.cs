@@ -37,7 +37,7 @@ namespace SecretariaGobierno.Controllers
         }
 
         // GET: Observacions/Create
-        public ActionResult Create()
+        public ActionResult Create(int? id)
         {
             ViewBag.InstanciaID = new SelectList(db.Instancias, "InstanciaID", "InstanciaID");
             return View();
@@ -48,13 +48,14 @@ namespace SecretariaGobierno.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ObservacionID,Anotacion,InstanciaID")] Observacion observacion)
+        public ActionResult Create([Bind(Include = "ObservacionID,Anotacion,InstanciaID")] Observacion observacion, int id)
         {
             if (ModelState.IsValid)
             {
+                observacion.InstanciaID = id;
                 db.Observacions.Add(observacion);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Details", "Instancias", new { id= id });
             }
 
             ViewBag.InstanciaID = new SelectList(db.Instancias, "InstanciaID", "InstanciaID", observacion.InstanciaID);

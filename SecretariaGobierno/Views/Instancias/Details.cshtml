@@ -4,11 +4,14 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<div id="navegador">
+    <p style="margin: 0px; padding: 0px;">@Model.Establecimiento.Nombre/@Model.Numero</p>
+</div>
+
 
 <div>
-    <h4>Instancia</h4>
     <hr />
+    <h5 style="font-weight:bold;">Información General</h5>
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.Establecimiento.Nombre)
@@ -51,8 +54,43 @@
         </dd>
 
     </dl>
+    <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("Edit", new { id = Model.InstanciaID })'">Editar Información Principal</button>
+    <button type="button" class="btn btn-default">Regresar</button>
+    <hr />
+    <h5 style="font-weight:bold;">Observaciones</h5>
+    <hr />
+    <h5 style="font-weight:bold;">Observaciones</h5>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Observaciones</th>
+                <th>Opciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var x in Model.Observacion)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(p => x.ObservacionID)</td>
+                    <td>@Html.DisplayFor(p => x.Anotacion)</td>
+                    <td class="dropdown">
+                        <button class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                            Dropdown
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                            <li>@Html.ActionLink("Detalles", "Details", "Observacions", new { id = x.ObservacionID }, null)</li>
+                            <li>@Html.ActionLink("Editar Observación", "Edit", "Observacions", new { id = x.ObservacionID }, null)</li>
+                            <li><a href="#">Borrar</a></li>
+                        </ul>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.InstanciaID }) |
-    @Html.ActionLink("Back to List", "Index")
+    <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("Create", "Observacions", new { id = Model.InstanciaID } )'">Añadir Observacion</button>
+
 </p>
